@@ -1,6 +1,6 @@
 ﻿namespace ChessLogic
 {
-    internal class Position
+    public class Position
     {
         public int Row {  get; } // y osa
         public int Column { get; } // x osa

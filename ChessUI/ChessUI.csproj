@@ -9,8 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Assets\BishupB.png" />
-    <None Remove="Assets\BishupW.png" />
+    <None Remove="Assets\BishopB.png" />
+    <None Remove="Assets\BishopW.png" />
     <None Remove="Assets\Icon.png" />
     <None Remove="Assets\KingB.png" />
     <None Remove="Assets\KingW.png" />
@@ -29,8 +29,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Assets\BishupB.png" />
-    <Resource Include="Assets\BishupW.png" />
+    <Resource Include="Assets\BishopB.png" />
+    <Resource Include="Assets\BishopW.png" />
     <Resource Include="Assets\ChessBoard.png" />
     <Resource Include="Assets\Icon.png" />
     <Resource Include="Assets\KingB.png" />
