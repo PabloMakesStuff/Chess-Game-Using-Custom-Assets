@@ -1,17 +1,43 @@
 ﻿using ChessLogic;
 
-public class Knight : Piece
+namespace ChessLogic
 {
-    public override PieceType Type => PieceType.Knight;
-    public override Player Color { get; }
-    public Knight(Player color)
+    public class Knight : Piece
     {
-        Color = color;
-    }
-    public override Piece Copy()
-    {
-        Knight copy = new Knight(Color);
-        copy.HasMoved = HasMoved;
-        return copy;
+        public override PieceType Type => PieceType.Knight;
+        public override Player Color { get; }
+        public Knight(Player color)
+        {
+            Color = color;
+        }
+        public override Piece Copy()
+        {
+            Knight copy = new Knight(Color);
+            copy.HasMoved = HasMoved;
+            return copy;
+        }
+
+        private static IEnumerable<Position> PotentialToPositions(Position from)
+        {
+            foreach (Direction vDir in new Direction[] { Direction.Down, Direction.Up })
+            {
+                foreach (Direction hDir in new Direction[] { Direction.Left, Direction.Right })
+                {
+                    yield return from + 2 * vDir + hDir;
+                    yield return from + 2 * hDir + vDir;
+                }
+            }
+        }
+
+        private IEnumerable<Position> MovePositions(Position from, Board board)
+        {
+            return PotentialToPositions(from).Where(pos => Board.IsInside(pos) 
+                && (board.IsEmpty(pos) || board[pos].Color != Color));
+        }
+
+        public override IEnumerable<Move> GetMoves(Board board, Position from)
+        {
+            return MovePositions(from, board).Select(to => new NormalMove(from, to));
+        } 
     }
 }
